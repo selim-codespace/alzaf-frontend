@@ -3,33 +3,36 @@ import { BannerCarousel } from "../modules/banner/presentation/banner-carousel";
 import { getProducts } from "../modules/product/application/get-products.use-case";
 import { ProductGrid } from "../modules/product/presentation/product-grid";
 
- 
+
 
 interface HomePageProps {
-  searchParams: {
+  searchParams: Promise<{
     category?: string;
     minPrice?: string;
     maxPrice?: string;
     search?: string;
     sort?: string;
     page?: string;
-  };
+  }>;
 }
 
 export default async function HomePage({ searchParams }: HomePageProps) {
+  const params = await searchParams;
+
   // Parallel data fetching for optimal performance
   const [banners, productsResult] = await Promise.all([
     getBanners(),
     getProducts({
-      category: searchParams.category,
-      minPrice: searchParams.minPrice ? Number(searchParams.minPrice) : undefined,
-      maxPrice: searchParams.maxPrice ? Number(searchParams.maxPrice) : undefined,
-      search: searchParams.search,
-      sort: searchParams.sort as any,
-      page: searchParams.page ? Number(searchParams.page) : 1,
+      category: params.category,
+      minPrice: params.minPrice ? Number(params.minPrice) : undefined,
+      maxPrice: params.maxPrice ? Number(params.maxPrice) : undefined,
+      search: params.search,
+      sort: params.sort as any,
+      page: params.page ? Number(params.page) : 1,
       limit: 12,
     }),
   ]);
+
 
   return (
     <>
