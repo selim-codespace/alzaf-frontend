@@ -14,7 +14,7 @@ export function SiteHeader({ categories }: SiteHeaderProps) {
 
     return (
         <>
-            <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+            <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md  shadow-sm transition-all duration-300">
                 <div className="container mx-auto px-4 h-18 flex items-center justify-between">
 
                     {/* Mobile Menu Button */}

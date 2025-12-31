@@ -1,7 +1,7 @@
 import { Pagination } from "@/src/shared/domain/types";
-import { Product } from "../domain/product.types";
-import { ProductFilters } from "../domain/productFillter.types";
+import { Product } from "../domain/product.types"; 
 import { apiClient } from "@/src/shared/infrastructure/http/api-client";
+import { ProductFilters } from "../domain/productFilter.types";
 
 
 

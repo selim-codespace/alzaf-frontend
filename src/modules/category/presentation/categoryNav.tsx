@@ -36,6 +36,7 @@ export function CategoryNav({ categories }: CategoryNavProps) {
             return (
               <Link
                 key={category.id}
+                // /products?category=Electronics
                 href={`/?category=${category.slug}#products`}
                 className={`relative px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 whitespace-nowrap border ${isActive
                   ? 'bg-gray-900 text-white border-gray-900 shadow-lg shadow-gray-900/20'

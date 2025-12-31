@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { ProductDetails } from '@/src/modules/product/domain/productFillter.types';
-import { ProductGrid } from '@/src/modules/product/presentation/productGrid';
-import { getProductDetails } from '@/src/modules/product/application/getProductDetails.usCase';
+import Link from 'next/link'; 
+import { ProductGrid } from '@/src/modules/product/presentation/productGrid'; 
 import { formatPrice, formatStock } from '@/src/lib/utils';
 import type { Metadata } from 'next';
+import { getProductDetails } from '@/src/modules/product/application/getProductDetails.useCase';
+import { ProductDetails } from '@/src/modules/product/domain/productFilter.types';
 
 interface ProductPageProps {
     params: Promise<{ id: string }>;
@@ -118,7 +118,7 @@ function ProductDetailsView({ details }: ProductDetailsViewProps) {
                             {product.name}
                         </h1>
                         <div className="flex items-center gap-4 mt-4">
-                            <div className="flex items-center gap-1 bg-yellow-50 px-3 py-1.5 rounded-lg border border-yellow-100"> 
+                            <div className="flex items-center gap-1 bg-yellow-50 px-3 py-1.5 rounded-lg border border-yellow-100">
                                 <span className="font-bold text-yellow-800">{product.rating.toFixed(1)}</span>
                                 <span className="text-yellow-600 text-sm ml-1">(128 reviews)</span>
                             </div>

@@ -30,7 +30,7 @@ export function BannerCarousel({ banners }: BannerCarouselProps) {
 
   if (banners.length === 0) return null;
 
-  const currentBanner = banners[currentIndex];
+  const   currentBanner = banners[currentIndex];
 
   return (
     <div
@@ -55,7 +55,7 @@ export function BannerCarousel({ banners }: BannerCarouselProps) {
       </div>
 
       {/* Content Container */}
-      <div className="relative h-full container mx-auto px-4 md:px-6 flex flex-col justify-center">
+      <div className="relative h-full container mx-auto px-4 md:px-6 flex flex-col justify-center left-10">
         <div
           className="max-w-3xl space-y-4 md:space-y-6 animate-fade-in translate-y-4 opacity-0"
           key={currentBanner.id}
@@ -89,16 +89,16 @@ export function BannerCarousel({ banners }: BannerCarouselProps) {
           <div className="absolute inset-y-0 left-0 flex items-center pl-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <button
               onClick={goToPrev}
-              className="p-3 rounded-full glass-panel text-white hover:bg-white/20 transition-colors"
+              className="w-10 h-10 flex items-center justify-center rounded-full glass-panel text-white hover:bg-white/20 transition-colors"
               aria-label="Previous slide"
-            ></button>
+            >{"<"}</button>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <button
               onClick={goToNext}
-              className="p-3 rounded-full glass-panel text-white hover:bg-white/20 transition-colors"
+              className="w-10 h-10 flex items-center justify-center rounded-full glass-panel text-white hover:bg-white/20 transition-colors"
               aria-label="Next slide"
-            ></button>
+            >{">"}</button>
           </div>
 
           {/* Dot Indicator */}

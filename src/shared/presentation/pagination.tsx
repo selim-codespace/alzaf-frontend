@@ -20,15 +20,15 @@ export function Pagination({ pagination }: PaginationProps) {
 
     if (totalPages <= 1) return null;
 
- 
+
     const getPageNumbers = () => {
         const pages: (number | string)[] = [];
-        const showPages = 5;  
+        const showPages = 5;
 
         let start = Math.max(1, currentPage - Math.floor(showPages / 2));
         let end = Math.min(totalPages, start + showPages - 1);
 
-      
+
         if (end - start < showPages - 1) {
             start = Math.max(1, end - showPages + 1);
         }
@@ -59,11 +59,11 @@ export function Pagination({ pagination }: PaginationProps) {
                     className="px-3 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors"
                     aria-label="Previous page"
                 >
-                    ← Prev
+                    Prev
                 </Link>
             ) : (
                 <span className="px-3 py-2 rounded-lg border border-gray-200 text-gray-400 cursor-not-allowed">
-                    ← Prev
+                    Prev
                 </span>
             )}
 
