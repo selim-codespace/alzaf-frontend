@@ -56,7 +56,7 @@ export function Pagination({ pagination }: PaginationProps) {
             {hasPrevPage ? (
                 <Link
                     href={createPageUrl(currentPage - 1)}
-                    className="px-3 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors"
+                    className="px-3 py-2 rounded-lg border border-gray-300 transition-colors"
                     aria-label="Previous page"
                 >
                     Prev
@@ -97,7 +97,7 @@ export function Pagination({ pagination }: PaginationProps) {
             {hasNextPage ? (
                 <Link
                     href={createPageUrl(currentPage + 1)}
-                    className="px-3 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors"
+                    className="px-3 py-2 rounded-lg border border-gray-300 transition-colors"
                     aria-label="Next page"
                 >
                     Next
