@@ -1,8 +1,8 @@
 'use client';
 
+import { SortOption } from '@/src/modules/product/domain/productFilter.types';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useState, useTransition, useEffect, useRef } from 'react';
-import type { SortOption } from '../../modules/product/domain/productFillter.types';
+import { useCallback, useState, useTransition, useEffect, useRef } from 'react'; 
 
 const SORT_OPTIONS: { value: SortOption | ''; label: string }[] = [
     { value: '', label: 'Default' },
