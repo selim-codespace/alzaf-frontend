@@ -1,46 +1,61 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { CategoryNav } from "../modules/category/presentation/category-nav";
-import { getCategories } from "../modules/category/application/get-categories.use-case";
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
+import { getCategories } from '../modules/category/application/getCategories.useCase';
+import type { Category } from '../modules/category/domain/category.types';
+import { SiteHeader } from '../modules/layout/presentation/siteHeader';
+import Footer from '../modules/layout/presentation/siteFooter';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Alzaf Task",
-  description: "Alzaf Task Develop By Mohammad Selim",
+  title: {
+    default: 'Alzaf Store',
+    template: '%s | Alzaf Store',
+  },
+  description: 'Your one-stop shop for quality products. Built by Mohammad Selim.',
+  keywords: ['e-commerce', 'shop', 'products', 'alzaf'],
 };
-
-
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const categories = await getCategories();
+  let categories: Category[] = [];
+  try {
+    categories = await getCategories();
+  } catch (error) {
+    console.error('Failed to fetch categories:', error);
+  }
 
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-slate-50`}
       >
-        <header className="border-b">
-          <div className="container mx-auto px-4 py-4">
-            <h1 className="text-2xl font-bold">E-Commerce Store</h1>
+        {/* Header */}
+        <SiteHeader categories={categories} />
+
+        {/* Main Content */}
+        <main className="flex-1 relative">
+          <div className="absolute inset-0 bg-white -z-10 opacity-40 mix-blend-multiply pointer-events-none" />
+          <div className="container mx-auto px-4 py-8 md:py-12 animate-fade-in">
+            {children}
           </div>
-        </header>
-        <CategoryNav categories={categories} />
-        <main className="container mx-auto px-4 py-8">{children}</main>
+        </main>
+
+        {/* Footer */}
+        <Footer categories={categories} />
+
       </body>
     </html>
   );

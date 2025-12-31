@@ -1,9 +1,9 @@
-import { Pagination } from "@/src/shared/domain/pagination.types";
+import { Pagination } from "@/src/shared/domain/types";
 import { Product } from "../domain/product.types";
-import { ProductFilters } from "../domain/product-filter.types";
+import { ProductFilters } from "../domain/productFillter.types";
 import { apiClient } from "@/src/shared/infrastructure/http/api-client";
 
- 
+
 
 interface ProductsResponse {
   products: Product[];

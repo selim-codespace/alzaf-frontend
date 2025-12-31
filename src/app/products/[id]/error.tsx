@@ -28,7 +28,7 @@ export default function ProductError({
         </p>
         <button
           onClick={reset}
-          className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+          className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
         >
           Try again
         </button>

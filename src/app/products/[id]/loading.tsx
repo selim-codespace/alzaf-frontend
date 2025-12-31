@@ -1,3 +1,5 @@
+// Skeleton loading get form an ui library
+
 export default function ProductLoading() {
   return (
     <div className="space-y-12">

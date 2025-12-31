@@ -1,4 +1,6 @@
-const nextConfig = {
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
@@ -8,10 +10,6 @@ const nextConfig = {
       },
     ],
   },
-  // Forcing dynamic rendering for all pages (SSR)
-  experimental: {
-    serverActions: true,
-  },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

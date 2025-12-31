@@ -1,6 +1,6 @@
 import { ApiError } from '@/src/shared/infrastructure/http/api-error';
-import { ProductDetails } from '../domain/product-filter.types';
-import { productRepository } from '../infrastructure/product.repository'; 
+import { ProductDetails } from '../domain/productFillter.types';
+import { productRepository } from '../infrastructure/product.repository';
 
 export async function getProductDetails(id: number): Promise<ProductDetails> {
   try {
