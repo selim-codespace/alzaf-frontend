@@ -13,7 +13,7 @@ export function formatPrice(price: number): string {
   }).format(price);
 }
 
-// Format stock status with human-readable text
+// Format stock status 
 export function formatStock(stock: number): string {
   if (stock === 0) return 'Out of stock';
   if (stock < 5) return `Only ${stock} left!`;

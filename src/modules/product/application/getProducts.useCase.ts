@@ -1,6 +1,6 @@
 import { Pagination } from '@/src/shared/domain/types';
 import { Product } from '../domain/product.types';
-import { productRepository } from '../infrastructure/product.repository';
+import { productRepository } from '../infrastructure/productRepository';
 import { ProductFilters } from '../domain/productFillter.types';
 
 interface GetProductsResult {

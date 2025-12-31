@@ -2,8 +2,7 @@
 /* paste css codes from my exististing project for time saving */
 @import "tailwindcss";
 
-:root {
-  /* Premium Light Theme Colors */
+:root { 
   --background: #cfdfef;
   /* Slate-50: Softer than pure white */
   --foreground: #0f172a;

@@ -63,7 +63,7 @@ export function SiteHeader({ categories }: SiteHeaderProps) {
                     <div className="flex items-center gap-2">
                         <button className="p-2 text-gray-500 hover:text-green-600 transition-colors relative group">
                             <span className="sr-only">Cart</span>
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+                            
                             <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white transform scale-0 group-hover:scale-100 transition-transform" />
                         </button>
                     </div>

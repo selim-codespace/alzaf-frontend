@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { getBanners } from '../modules/banner/application/getBanners.useCase';
 import { BannerCarousel } from '../modules/banner/presentation/bannerCarousel';
-import { getProducts } from '../modules/product/application/get-products.use-case';
+import { getProducts } from '../modules/product/application/getProducts.useCase';
 import { ProductGrid } from '../modules/product/presentation/productGrid';
 import { Pagination } from '../shared/presentation/pagination';
 import { ProductFilters } from '../shared/presentation/productFillters';

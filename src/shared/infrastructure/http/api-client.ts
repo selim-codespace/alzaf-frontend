@@ -1,7 +1,7 @@
-import { API_CONFIG } from '../config/api.config';
-import { ApiError } from './api-error';
+import { API_CONFIG } from "../config/api.config";
+import { ApiError } from "./api-error";
 
-type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 
 interface FetchOptions extends RequestInit {
   timeout?: number;
@@ -42,11 +42,11 @@ class ApiClient {
         const config: RequestInit = {
           method,
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             ...headers,
           },
           signal: controller.signal,
-          cache: 'no-store', // Default to no-store for server-side dynamic data
+          cache: "no-store", // Default to no-store for server-side dynamic data
           ...customConfig,
         };
 
@@ -58,8 +58,11 @@ class ApiClient {
         clearTimeout(timeoutId);
 
         if (!response.ok) {
-          // Don't retry client errors (4xx) unless it's 429 (Too Many Requests)
-          if (response.status >= 400 && response.status < 500 && response.status !== 429) {
+          if (
+            response.status >= 400 &&
+            response.status < 500 &&
+            response.status !== 429
+          ) {
             throw new ApiError(
               response.status,
               `HTTP ${response.status}: ${response.statusText}`,
@@ -75,7 +78,6 @@ class ApiClient {
 
         const json = await response.json();
         return json.data as T;
-
       } catch (error) {
         clearTimeout(timeoutId);
         attempt++;
@@ -88,9 +90,15 @@ class ApiClient {
 
         if (attempt <= retries && isRetryable) {
           // Exponential backoff with jitter
-          const delay = Math.min(1000 * Math.pow(2, attempt) + Math.random() * 100, 5000);
-          console.warn(`Attempt ${attempt} failed. Retrying in ${delay}ms...`, error);
-          await new Promise(resolve => setTimeout(resolve, delay));
+          const delay = Math.min(
+            1000 * Math.pow(2, attempt) + Math.random() * 100,
+            5000
+          );
+          console.warn(
+            `Attempt ${attempt} failed. Retrying in ${delay}ms...`,
+            error
+          );
+          await new Promise((resolve) => setTimeout(resolve, delay));
           continue;
         }
 
@@ -98,35 +106,51 @@ class ApiClient {
           throw error;
         }
 
-        if (error instanceof Error && error.name === 'AbortError') {
-          throw new ApiError(408, 'Request timeout', endpoint);
+        if (error instanceof Error && error.name === "AbortError") {
+          throw new ApiError(408, "Request timeout", endpoint);
         }
 
-        throw new ApiError(500, error instanceof Error ? error.message : 'Network error', endpoint);
+        throw new ApiError(
+          500,
+          error instanceof Error ? error.message : "Network error",
+          endpoint
+        );
       }
     }
 
-    throw new ApiError(500, 'Max retries reached', endpoint);
+    throw new ApiError(500, "Max retries reached", endpoint);
   }
 
   async get<T>(endpoint: string, options?: FetchOptions): Promise<T> {
-    return this.request<T>(endpoint, 'GET', undefined, options);
+    return this.request<T>(endpoint, "GET", undefined, options);
   }
 
-  async post<T>(endpoint: string, data: unknown, options?: FetchOptions): Promise<T> {
-    return this.request<T>(endpoint, 'POST', data, options);
+  async post<T>(
+    endpoint: string,
+    data: unknown,
+    options?: FetchOptions
+  ): Promise<T> {
+    return this.request<T>(endpoint, "POST", data, options);
   }
 
-  async put<T>(endpoint: string, data: unknown, options?: FetchOptions): Promise<T> {
-    return this.request<T>(endpoint, 'PUT', data, options);
+  async put<T>(
+    endpoint: string,
+    data: unknown,
+    options?: FetchOptions
+  ): Promise<T> {
+    return this.request<T>(endpoint, "PUT", data, options);
   }
 
   async delete<T>(endpoint: string, options?: FetchOptions): Promise<T> {
-    return this.request<T>(endpoint, 'DELETE', undefined, options);
+    return this.request<T>(endpoint, "DELETE", undefined, options);
   }
 
-  async patch<T>(endpoint: string, data: unknown, options?: FetchOptions): Promise<T> {
-    return this.request<T>(endpoint, 'PATCH', data, options);
+  async patch<T>(
+    endpoint: string,
+    data: unknown,
+    options?: FetchOptions
+  ): Promise<T> {
+    return this.request<T>(endpoint, "PATCH", data, options);
   }
 }
 

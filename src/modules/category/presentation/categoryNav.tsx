@@ -16,7 +16,7 @@ export function CategoryNav({ categories }: CategoryNavProps) {
     <nav className="sticky top-[72px] z-40 w-full glass-panel border-b-0 shadow-sm transition-all duration-300" aria-label="Category navigation">
       <div className="w-full overflow-hidden">
         <div className="flex items-center gap-2 overflow-x-auto py-3 px-4 scrollbar-hide mask-fade md:justify-center">
-          {/* "All" Link */}
+          {/* "All" Linkss */}
           <Link
             href="/#products"
             className={`relative w-fit px-6 py-2 rounded-full text-nowrap text-sm font-semibold transition-all duration-300 group border ${!currentCategory
@@ -27,9 +27,8 @@ export function CategoryNav({ categories }: CategoryNavProps) {
             All Products
 
           </Link>
-
-          {/* Separator - Hidden on mobile to save space, visible on desktop */}
-          <div className="hidden md:block w-px h-6 bg-gray-200 mx-2 flex-shrink-0" />
+ 
+          <div className="hidden md:block w-px h-6 bg-gray-200 mx-2" />
 
           {/* Categories */}
           {categories.map((category) => {
