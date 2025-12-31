@@ -1,4 +1,4 @@
- 
+
 import { apiClient } from '@/src/shared/infrastructure/http/api-client';
 import type { Category } from '../domain/category.types';
 
@@ -9,6 +9,8 @@ interface CategoriesResponse {
 
 export const categoryRepository = {
   async findAll(): Promise<CategoriesResponse> {
-    return apiClient.get<CategoriesResponse>('/categories');
+    return apiClient.get<CategoriesResponse>('/categories', {
+      next: { revalidate: 3600 }
+    });
   },
 };

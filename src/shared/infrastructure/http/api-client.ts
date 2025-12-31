@@ -46,7 +46,7 @@ class ApiClient {
             ...headers,
           },
           signal: controller.signal,
-          cache: "no-store", // Default to no-store for server-side dynamic data
+          ...(customConfig.cache || customConfig.next ? {} : { cache: "no-store" }),
           ...customConfig,
         };
 

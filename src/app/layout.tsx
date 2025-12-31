@@ -5,6 +5,7 @@ import { getCategories } from '../modules/category/application/getCategories.use
 import type { Category } from '../modules/category/domain/category.types';
 import { SiteHeader } from '../modules/layout/presentation/siteHeader';
 import Footer from '../modules/layout/presentation/siteFooter';
+import { Suspense } from 'react';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -19,7 +20,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     default: 'Alzaf Store',
-    template: '%s | Alzaf Store',
+    template: 'Alzaf Store',
   },
   description: 'Your one-stop shop for quality products. Built by Mohammad Selim.',
   keywords: ['e-commerce', 'shop', 'products', 'alzaf'],
@@ -43,7 +44,9 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-slate-50`}
       >
         {/* Header */}
-        <SiteHeader categories={categories} />
+        <Suspense fallback={<div className="h-18 bg-white shadow-sm" />}>
+          <SiteHeader categories={categories} />
+        </Suspense>
 
         {/* Main Content */}
         <main className="flex-1 relative">
